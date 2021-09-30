@@ -2,33 +2,19 @@ import React from "react";
 import PropTypes from "prop-types";
 import style from "./FeedbackOptions.module.css";
 
-const FeedbackOptions = ({ handleChange }) => {
+const FeedbackOptions = ({ options, onFeedback }) => {
   return (
     <div className={style.boxBtn}>
-      <button
-        className={style.button}
-        type="button"
-        name="good"
-        onClick={handleChange}
-      >
-        good
-      </button>
-      <button
-        className={style.button}
-        type="button"
-        name="neutral"
-        onClick={handleChange}
-      >
-        neutral
-      </button>
-      <button
-        className={style.button}
-        type="button"
-        name="bad"
-        onClick={handleChange}
-      >
-        bad
-      </button>
+      {options.map((name, index) => (
+        <button
+          key={index}
+          className={style.button}
+          type="button"
+          onClick={() => onFeedback({ name })}
+        >
+          {name}
+        </button>
+      ))}
     </div>
   );
 };

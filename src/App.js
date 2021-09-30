@@ -12,8 +12,8 @@ class App extends Component {
     bad: 0,
   };
 
-  handleChange = (e) => {
-    const { name } = e.target;
+  handleChange = (option) => {
+    const { name } = option;
     this.setState((prevStat) => ({
       [name]: prevStat[name] + 1,
     }));
@@ -39,7 +39,10 @@ class App extends Component {
     return (
       <div className={style.conteiner}>
         <Section title="Please leave feedback">
-          <FeedbackOptions handleChange={this.handleChange} />
+          <FeedbackOptions
+            options={["good", "neutral", "bad"]}
+            onFeedback={this.handleChange}
+          />
         </Section>
         <Section title="Statistics">
           {total ? (
